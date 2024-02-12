@@ -17,7 +17,7 @@ type API struct {
 // NewAPI creates a new TapsilatAPI struct
 func NewAPI(token string) *API {
 	return &API{
-		EndPoint: "https://localhost:4000/api/public",
+		EndPoint: "https://grc.tapsilat.dev/api/public",
 		Token:    token,
 	}
 }
@@ -78,7 +78,7 @@ func (t *API) put(path string, payload interface{}, response interface{}) error 
 // }
 
 func (t *API) do(req *http.Request, response interface{}) error {
-	req.Header.Set("x-mono-org-auth", t.Token)
+	req.Header.Set("data-api-key", t.Token)
 	client := &http.Client{
 		Timeout: 30 * time.Second,
 	}
